@@ -1198,3 +1198,27 @@ def create_app(args):
         app.register_blueprint(swaggerui_blueprint)
 
     return app
+
+# Adicione o bloco abaixo após o `return app` no final do arquivo
+if __name__ == "__main__":
+    import argparse
+
+    # Configurando argumentos padrão para evitar erros
+    parser = argparse.ArgumentParser(description="Run LibreTranslate API")
+    parser.add_argument("--req_limit", type=int, default=1000, help="Request limit")
+    parser.add_argument("--hourly_req_limit", type=int, default=0, help="Hourly request limit")
+    parser.add_argument("--daily_req_limit", type=int, default=0, help="Daily request limit")
+    parser.add_argument("--url_prefix", type=str, default="", help="URL prefix for API")
+    parser.add_argument("--api_keys", type=str, default="", help="Path to API keys database")
+    parser.add_argument("--frontend_language_source", type=str, default="auto", help="Frontend language source")
+    parser.add_argument("--frontend_language_target", type=str, default="locale", help="Frontend language target")
+    parser.add_argument("--disable_files_translation", action="store_true", help="Disable file translation")
+    parser.add_argument("--shared_storage", type=str, default="", help="Shared storage path")
+    parser.add_argument("--load_only", action="store_true", help="Load only models")
+    parser.add_argument("--update_models", action="store_true", help="Update models")
+    parser.add_argument("--force_update_models", action="store_true", help="Force update models")
+    args = parser.parse_args()
+
+    # Cria a aplicação e a inicia
+    app = create_app(args)
+    app.run(host="0.0.0.0", port=10000)
