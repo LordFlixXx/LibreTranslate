@@ -1,0 +1,7 @@
+flask
+tensorflow
+transformers
+sentencepiece
+numpy
+requests
+gunicorn
