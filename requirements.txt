@@ -5,3 +5,4 @@ sentencepiece
 numpy
 requests
 gunicorn
+argostranslatefiles
